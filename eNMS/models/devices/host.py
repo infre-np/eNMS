@@ -1,7 +1,7 @@
 from sqlalchemy import ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
-from eNMS.database import db
+from eNMS.database import db, vs
 from eNMS.forms import DeviceForm
 from eNMS.fields import HiddenField, StringField, SelectField
 from eNMS.models.inventory import Device
