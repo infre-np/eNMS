@@ -13,10 +13,7 @@ class Host(Device):
     __mapper_args__ = {"polymorphic_identity": "host"}
     pretty_name = "Host"
     id = db.Column(Integer, ForeignKey("device.id"), primary_key=True)
-    priority = db.Column(Integer, default=1)
-    devices = relationship(
-        "Device", secondary=db.device_host_table, back_populates="hosts"
-    )
+    serial_number = db.Column(db.SmallString)
 
 
 class HostForm(DeviceForm):
@@ -24,6 +21,5 @@ class HostForm(DeviceForm):
     icon = SelectField(
         "Icon", choices=list(vs.visualization["icons"].items()), default="host"
     )
-    priority = IntegerField("Priority", default=1)
-    devices = MultipleInstanceField("Devices", model="device")
-    properties = ["priority", "devices"]
+    serial_number = StringField("Serial Number")
+    properties = ["serial_number"]
