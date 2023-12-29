@@ -1449,7 +1449,13 @@
   "property_list": {
     "device": {
       "model": {
-        "choices": [["Arista", "Arista"], ["Cisco", "Cisco"], ["Linux", "Linux"], ["Juniper", "Juniper"]],
+        "choices": [
+          [ "Arista", "Arista" ],
+          [ "Cisco", "Cisco" ],
+          [ "Linux", "Linux" ],
+          [ "Juniper", "Juniper" ],
+          [ "Windows", "Windows" ]
+        ],
         "validate_choice": false
       },
       "operating_system": {

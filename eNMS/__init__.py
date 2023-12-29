@@ -9,7 +9,6 @@ from eNMS.variables import vs
 
 def initialize():
     server.register_plugins()
-    db.delete_all()
     first_init = db._initialize(env)
     if env.detect_cli():
         return
