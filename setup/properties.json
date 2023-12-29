@@ -1459,11 +1459,25 @@
         "validate_choice": false
       },
       "operating_system": {
-        "choices": [["IOS", "IOS"], ["IOS-XE", "IOS-XE"], ["IOS-XR", "IOS-XR"], ["Junos", "Junos"], ["EOS", "EOS"], ["Linux", "Linux"]],
+        "choices": [
+          [ "IOS", "IOS" ],
+          [ "IOS-XE", "IOS-XE" ],
+          [ "IOS-XR", "IOS-XR" ],
+          [ "Junos", "Junos" ],
+          [ "EOS", "EOS" ],
+          [ "Linux", "Linux" ],
+          ["Windows" , "Windows"]
+        ],
         "validate_choice": false
       },
       "vendor": {
-        "choices": [["Arista", "Arista"], ["Cisco", "Cisco"], ["Juniper", "Juniper"], ["Linux", "Linux"]],
+        "choices": [
+          [ "Arista", "Arista" ],
+          [ "Cisco", "Cisco" ],
+          [ "Juniper", "Juniper" ],
+          [ "Linux", "Linux" ],
+          [ "Windows", "Windows" ]
+        ],
         "validate_choice": false
       }
     },
