@@ -23,7 +23,7 @@ from pathlib import Path
 from tarfile import open as open_tar
 from traceback import format_exc
 from werkzeug.exceptions import Forbidden, NotFound
-
+import base64
 from eNMS import controller
 from eNMS.database import db
 from eNMS.environment import env
@@ -131,8 +131,9 @@ class Server(Flask):
             if rest_request:
                 user = None
                 if request.authorization:
-                    print(request.authorization)
-                    user = env.authenticate_user(**request.authorization)
+                    #print(request)
+                    decodestr = base64.b64decode(request.authorization)
+                    user = env.authenticate_user(**decodestr)
                 if user:
                     login_user(user)
             username = getattr(current_user, "name", "Unknown")
