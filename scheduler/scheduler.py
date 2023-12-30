@@ -125,7 +125,7 @@ class Scheduler(Flask):
             }
         else:
             trigger = {"trigger": "date", "run_date": self.aps_date(task["start_date"])}
-        print("Printing task object : {task}")
+        print(task)
         if not self.scheduler.get_job(task["id"]):
             job = self.scheduler.add_job(
                 id=str(task["id"]),
