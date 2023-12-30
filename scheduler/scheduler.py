@@ -96,7 +96,7 @@ class Scheduler(Flask):
 
     @staticmethod
     def run_service2(task):
-        print(task["frequency"])
+        print(task)
         post(
             f"{getenv('ENMS_ADDR')}/rest/run_task/{task['id']}",
             json={},
@@ -120,6 +120,7 @@ class Scheduler(Flask):
             }
         else:
             trigger = {"trigger": "date", "run_date": self.aps_date(task["start_date"])}
+        print("Printing task object : {task}")
         if not self.scheduler.get_job(task["id"]):
             job = self.scheduler.add_job(
                 id=str(task["id"]),
