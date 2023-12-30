@@ -96,7 +96,7 @@ class Scheduler(Flask):
 
     @staticmethod
     def run_service2(task):
-        print(task["scheduling_mode"])
+        print(task["frequency"])
         post(
             f"{getenv('ENMS_ADDR')}/rest/run_task/{task['id']}",
             json={},
