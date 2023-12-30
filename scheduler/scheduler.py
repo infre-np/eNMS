@@ -87,7 +87,6 @@ class Scheduler(Flask):
 
     def configure_scheduler(self):
         self.scheduler = BackgroundScheduler(self.settings["config"])
-        self.scheduler.add_listener(register_routes, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
         self.scheduler.start()
     
     @staticmethod
@@ -100,8 +99,9 @@ class Scheduler(Flask):
         )
 
     @staticmethod
-    def run_service2(task):
-        print(task)
+    def run_service2(task, callback_return):
+        if callback_return:
+            callback_return(task)
         post(
             f"{getenv('ENMS_ADDR')}/rest/run_task/{task['id']}",
             json=task,
@@ -131,7 +131,7 @@ class Scheduler(Flask):
                 id=str(task["id"]),
                 replace_existing=True,
                 func=self.run_service2,
-                args=task,
+                args=(task,lambda r: print('{r}')),
                 #args=[task["id"]],
                 **trigger,
             )
