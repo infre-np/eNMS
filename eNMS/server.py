@@ -131,6 +131,7 @@ class Server(Flask):
             if rest_request:
                 user = None
                 if request.authorization:
+                    print(request.authorization)
                     user = env.authenticate_user(**request.authorization)
                 if user:
                     login_user(user)
