@@ -142,6 +142,7 @@ class RestApi:
             "runtime": vs.get_time(),
             "task": task.id,
             **task.initial_payload,
+            "raw": task,
         }
         if task.devices:
             data["target_devices"] = [device.id for device in task.devices]
