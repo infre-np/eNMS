@@ -1,5 +1,6 @@
 from apscheduler.jobstores.base import JobLookupError
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.events import EVENT_JOB_ERROR, EVENT_JOB_EXECUTED
 from apscheduler.triggers.cron import CronTrigger
 from datetime import datetime
 from flask import Flask, jsonify, request
@@ -33,6 +34,7 @@ class Scheduler(Flask):
         dictConfig(self.settings["logging"])
         self.configure_scheduler()
         self.register_routes()
+        
 
     @staticmethod
     def aps_date(date):
@@ -43,6 +45,7 @@ class Scheduler(Flask):
 
     def configure_scheduler(self):
         self.scheduler = BackgroundScheduler(self.settings["config"])
+        self.scheduler.add_listener(register_routes, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
         self.scheduler.start()
 
     def register_routes(self):
