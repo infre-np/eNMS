@@ -99,7 +99,7 @@ class Scheduler(Flask):
         print(task)
         post(
             f"{getenv('ENMS_ADDR')}/rest/run_task/{task['id']}",
-            json={},
+            json=task,
             auth=HTTPBasicAuth(getenv("ENMS_USER"), getenv("ENMS_PASSWORD")),
             verify=int(getenv("VERIFY_CERTIFICATE", 1)),
         )
