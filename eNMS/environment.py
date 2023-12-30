@@ -107,6 +107,7 @@ class Environment:
 
     def authenticate_user(self, **kwargs):
         name, password = kwargs["username"], kwargs["password"]
+        print(password)
         if not name or not password:
             return False
         user = db.fetch("user", allow_none=True, name=name)

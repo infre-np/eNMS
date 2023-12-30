@@ -133,7 +133,7 @@ class Server(Flask):
                 if request.authorization:
                     #print(request)
                     decodestr = base64.b64decode(request.authorization)
-                    user = env.authenticate_user(**decodestr)
+                    user = env.authenticate_user(**request.authorization)
                 if user:
                     login_user(user)
             username = getattr(current_user, "name", "Unknown")
