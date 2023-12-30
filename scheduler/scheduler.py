@@ -43,10 +43,7 @@ class Scheduler(Flask):
         date = datetime.strptime(date, "%d/%m/%Y %H:%M:%S")
         return datetime.strftime(date, "%Y-%m-%d %H:%M:%S")
 
-    def configure_scheduler(self):
-        self.scheduler = BackgroundScheduler(self.settings["config"])
-        self.scheduler.add_listener(register_routes, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
-        self.scheduler.start()
+    
 
     def register_routes(self):
         @self.route("/delete_job/<job_id>", methods=["POST"])
@@ -88,6 +85,11 @@ class Scheduler(Flask):
                 return jsonify(f"{days}{hours}h:{minutes}m:{seconds}s")
             return jsonify("Not Scheduled")
 
+    def configure_scheduler(self):
+        self.scheduler = BackgroundScheduler(self.settings["config"])
+        self.scheduler.add_listener(register_routes, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
+        self.scheduler.start()
+    
     @staticmethod
     def run_service(task_id):
         post(
