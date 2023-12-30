@@ -132,7 +132,7 @@ class Server(Flask):
                 user = None
                 if request.authorization:
                     #print(request)
-                    decodestr = base64.b64decode(request.authorization)
+                    #decodestr = base64.b64decode(request.authorization)
                     user = env.authenticate_user(**request.authorization)
                 if user:
                     login_user(user)
