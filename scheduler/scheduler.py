@@ -94,6 +94,17 @@ class Scheduler(Flask):
             verify=int(getenv("VERIFY_CERTIFICATE", 1)),
         )
 
+    @staticmethod
+    def run_service2(task):
+        print(task["scheduling_mode"])
+        post(
+            f"{getenv('ENMS_ADDR')}/rest/run_task/{task['id']}",
+            json={},
+            auth=HTTPBasicAuth(getenv("ENMS_USER"), getenv("ENMS_PASSWORD")),
+            verify=int(getenv("VERIFY_CERTIFICATE", 1)),
+        )
+
+
     def schedule_task(self, task):
         if task["scheduling_mode"] == "cron":
             crontab = task["crontab_expression"].split()
@@ -113,8 +124,9 @@ class Scheduler(Flask):
             job = self.scheduler.add_job(
                 id=str(task["id"]),
                 replace_existing=True,
-                func=self.run_service,
-                args=[task["id"]],
+                func=self.run_service2,
+                args=task,
+                #args=[task["id"]],
                 **trigger,
             )
         else:
