@@ -132,9 +132,18 @@ class Server(Flask):
                 user = None
                 if request.authorization:
                     decodestr = request.authorization
-                    x = decodestr.split(' ',1)
-                    print(x)
-                    user = env.authenticate_user(**request.authorization)
+                    x = dict(request.headers)
+                    #print(x)
+                    #print(x['Authorization'])
+                    b = x['Authorization'].split(' ',1)
+                    #print(b[1])
+                    decodestr = base64.b64decode(b[1]).decode("utf-8", "ignore")
+                    #print(decodestr)
+                    credInfos = decodestr.split(':',1)
+                    username = credInfos[0]
+                    password = credInfos[1]
+                    authN = {'username':username, 'password':password}
+                    user = env.authenticate_user(**authN)
                 if user:
                     login_user(user)
             username = getattr(current_user, "name", "Unknown")
