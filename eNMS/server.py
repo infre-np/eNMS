@@ -131,8 +131,9 @@ class Server(Flask):
             if rest_request:
                 user = None
                 if request.authorization:
-                    print(request)
-                    #decodestr = base64.b64decode(request.authorization)
+                    decodestr = request.authorization
+                    x = decodestr.split(' ',1)
+                    print(x)
                     user = env.authenticate_user(**request.authorization)
                 if user:
                     login_user(user)
