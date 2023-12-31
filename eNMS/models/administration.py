@@ -206,6 +206,27 @@ class Credential(AbstractBase):
             self.update_last_modified_properties()
 
 
+class Service_bus(AbstractBase):
+    __tablename__ = type = class_type = "service_bus"
+    id = db.Column(Integer, primary_key=True)
+    name = db.Column(db.SmallString, unique=True)
+    creator = db.Column(db.SmallString)
+    admin_only = db.Column(Boolean, default=False)
+    last_modified = db.Column(db.TinyString, info={"log_change": False})
+    last_modified_by = db.Column(db.SmallString, info={"log_change": False})
+    role = db.Column(db.SmallString, default="read-write")
+    subtype = db.Column(db.SmallString, default="password")
+    description = db.Column(db.LargeString)
+    username = db.Column(db.SmallString)
+    password = db.Column(db.SmallString)
+    private_key = db.Column(db.LargeString)
+    enable_password = db.Column(db.SmallString)
+    priority = db.Column(Integer, default=1)
+    def update(self, **kwargs):
+        super().update(**kwargs)
+        if not kwargs.get("migration_import"):
+            self.update_last_modified_properties()
+
 class Changelog(AbstractBase):
     __tablename__ = "changelog"
     type = db.Column(db.SmallString)

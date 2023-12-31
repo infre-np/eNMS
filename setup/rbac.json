@@ -118,6 +118,7 @@
     "/configuration_table": "access",
     "/confirmation_form": "access",
     "/credential_table": "access",
+    "/service_bus_table": "access",
     "/dashboard": "all",
     "/device_data_form": "access",
     "/device_table": "access",
@@ -265,6 +266,10 @@
   },
   "rbac_models": {
     "credential": {
+      "rbac_read": "Read",
+      "rbac_edit": "Edit"
+    },
+    "service_bus": {
       "rbac_read": "Read",
       "rbac_edit": "Edit"
     },

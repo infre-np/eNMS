@@ -46,6 +46,7 @@
     "workflow_edge",
     "task",
     "credential",
+    "service_bus",
     "pool"
   ],
   "dont_migrate": {
@@ -53,9 +54,11 @@
     "group": [
       "id",
       "credentials",
+      "services_bus",
       "rbac_configuration_devices",
       "rbac_connect_devices",
       "rbac_edit_credentials",
+      "rbac_edit_services_bus",
       "rbac_edit_devices",
       "rbac_edit_files",
       "rbac_edit_links",
@@ -69,6 +72,7 @@
       "rbac_pool_rbac_read",
       "rbac_pool_rbac_target",
       "rbac_read_credentials",
+      "rbac_read_services_bus",
       "rbac_read_devices",
       "rbac_read_files",
       "rbac_read_links",

@@ -547,6 +547,30 @@ class Database:
             raise Exception(f"No matching credentials found for DEVICE '{device.name}'")
         return credentials
 
+    def get_service_bus(
+        self, username, name=None, device=None, service_bus_type="any", optional=False
+    ):
+        query = (
+            self.session.query(vs.models["service_bus"])
+            .join(vs.models["group"], vs.models["service_bus"].groups)
+            .join(vs.models["user"], vs.models["service_bus"].users)
+        )
+        if device:
+            query = query.join(
+                vs.models["pool"], vs.models["service_bus"].device_pools
+            ).join(vs.models["device"], vs.models["pool"].devices)
+        query = query.filter(vs.models["user"].name == username)
+        if name:
+            query = query.filter(vs.models["service_bus"].name == name)
+        if device:
+            query = query.filter(vs.models["device"].name == device.name)
+        if service_bus_type != "any":
+            query = query.filter(vs.models["service_bus"].role == service_bus_type)
+        service_bus = max(query.all(), key=attrgetter("priority"), default=None)
+        if not service_bus and not optional:
+            raise Exception(f"No matching service_bus found for DEVICE '{device.name}'")
+        return service_bus
+
     def register_custom_models(self):
         for model in ("device", "link", "service"):
             paths = [vs.path / "eNMS" / "models" / f"{model}s"]

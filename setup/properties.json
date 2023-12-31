@@ -1293,6 +1293,64 @@
         "export": false
       }
     ],
+    "service_bus": [
+      {
+        "data": "name",
+        "title": "Name",
+        "search": "text"
+      },
+      {
+        "data": "creator",
+        "title": "Creator",
+        "search": "text",
+        "visible": false
+      },
+      {
+        "data": "admin_only",
+        "title": "Admin Only",
+        "search": "bool",
+        "visible": false
+      },
+      {
+        "data": "last_modified",
+        "title": "Last Modified",
+        "search": "text",
+        "visible": false
+      },
+      {
+        "data": "last_modified_by",
+        "title": "Last Modified By",
+        "search": "text",
+        "visible": false
+      },
+      {
+        "data": "subtype",
+        "title": "Type",
+        "search": "text"
+      },
+      {
+        "data": "description",
+        "title": "Description",
+        "search": "text",
+        "orderable": false
+      },
+      {
+        "data": "username",
+        "title": "Username",
+        "search": "text"
+      },
+      {
+        "data": "priority",
+        "title": "Priority",
+        "search": "text"
+      },
+      {
+        "data": "buttons",
+        "width": "130px",
+        "orderable": false,
+        "export": false
+      }
+    ],
     "changelog": [
       {
         "data": "time",

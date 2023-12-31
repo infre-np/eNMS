@@ -486,6 +486,17 @@ class Controller:
         else:
             return kwargs["username"], kwargs["password"]
 
+    def get_services_bus(self, device, optional=False, **kwargs):
+        if kwargs["services_bus"] == "device":
+            services_bus = db.get_service_bus(
+                current_user.name, device=device, optional=optional
+            )
+            if not services_bus:
+                return
+            return services_bus.username, env.get_password(services_bus.password)
+        else:
+            return kwargs["username"], kwargs["password"]
+
     def get_device_logs(self, device_id):
         device_logs = [
             log.name
