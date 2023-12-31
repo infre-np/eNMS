@@ -10,7 +10,7 @@
     "get_requests": {
       "/panel_form": "access",
       "/template_form": "access",
-      "/template_devices": "access"
+      "/template_table": "access"
     },
     "menu": {
       "Template": {
@@ -18,7 +18,11 @@
         "rbac": "access",
         "pages": {
           "Devices": {
-            "endpoint": "/template_devices",
+            "endpoint": "/template_table",
+            "rbac": "access"
+          },
+          "Devices Form": {
+            "endpoint": "/template_form",
             "rbac": "access"
           }
         }

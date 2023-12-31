@@ -18,6 +18,7 @@ from functools import wraps
 from importlib import import_module
 from io import BytesIO
 from logging import info
+import logging
 from os import getenv, remove
 from pathlib import Path
 from tarfile import open as open_tar
@@ -80,7 +81,7 @@ class Server(Flask):
             except Exception:
                 env.log("error", f"Could not import plugin '{plugin}':\n{format_exc()}")
                 continue
-            info(f"Loading plugin: {settings['name']}")
+            logging.warning(f"Loading plugin: {settings['name']}")
 
     def register_extensions(self):
         self.csrf = CSRFProtect()
