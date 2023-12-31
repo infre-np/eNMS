@@ -2,7 +2,7 @@ apscheduler
 argon2-cffi
 dicttoxml
 dramatiq[redis, watch]
-flask
+flask~=3.0.0
 flask_login
 flask-socketio
 flask_wtf
@@ -22,3 +22,8 @@ wtforms
 xlrd
 xlwt
 xmltodict
+
+Jinja2~=3.1.2
+MarkupSafe~=2.1.3
+werkzeug~=3.0.1
+click~=8.1.7

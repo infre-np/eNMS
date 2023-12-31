@@ -40,6 +40,10 @@
         "Credentials": {
           "endpoint": "/credential_table",
           "rbac": "admin"
+        },
+        "Service Bus": {
+          "endpoint": "/service_bus_table",
+          "rbac": "admin"
         }
       }
     },
