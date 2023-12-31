@@ -18,14 +18,6 @@
         "rbac": "access",
         "pages": {
           "Page": {
-            "subpages": {
-              "Subpage": {
-                "endpoint": "/template_form",
-                "rbac": "access"
-              }
-            },
-            "rbac": "access"
-          },
           "Devices": {
             "endpoint": "/template_devices",
             "rbac": "access"
