@@ -1,0 +1,43 @@
+{
+  "active": true,
+  "blueprint": {
+    "template_folder": "templates",
+    "static_folder": "static",
+    "static_url_path": "/template-static"
+  },
+  "name": "Template Plugin",
+  "rbac": {
+    "get_requests": {
+      "/panel_form": "access",
+      "/template_form": "access",
+      "/template_devices": "access"
+    },
+    "menu": {
+      "Template": {
+        "icon": "shield",
+        "rbac": "access",
+        "pages": {
+          "Page": {
+            "subpages": {
+              "Subpage": {
+                "endpoint": "/template_form",
+                "rbac": "access"
+              }
+            },
+            "rbac": "access"
+          },
+          "Devices": {
+            "endpoint": "/template_devices",
+            "rbac": "access"
+          }
+        }
+      }
+    },
+    "post_requests": {
+      "/process_form_data": "access"
+    }
+  },
+  "database": {
+    "import_export_models": ["port"]
+  }
+}
