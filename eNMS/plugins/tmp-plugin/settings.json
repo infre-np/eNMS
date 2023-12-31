@@ -3,14 +3,15 @@
   "blueprint": {
     "template_folder": "templates",
     "static_folder": "static",
-    "static_url_path": "/template-static"
+    "static_url_path": "/template"
   },
   "name": "Template Plugin",
   "rbac": {
     "get_requests": {
       "/panel_form": "access",
       "/template_form": "access",
-      "/template_table": "access"
+      "/port_table": "access",
+      "/template_devices": "access"
     },
     "menu": {
       "Template": {
@@ -18,11 +19,15 @@
         "rbac": "access",
         "pages": {
           "Devices": {
-            "endpoint": "/template_table",
+            "endpoint": "/port_table",
             "rbac": "access"
           },
           "Devices Form": {
             "endpoint": "/template_form",
+            "rbac": "access"
+          },
+          "Devices 2": {
+            "endpoint": "/template_devices",
             "rbac": "access"
           }
         }
@@ -34,5 +39,15 @@
   },
   "database": {
     "import_export_models": ["port"]
+  },
+  "properties": {
+    "tables": {
+      "port": [
+      {
+        "data": "name",
+        "title": "Name",
+        "search": "text"
+      }]
+  }
   }
 }

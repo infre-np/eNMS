@@ -18,10 +18,8 @@ class Plugin:
 
         @blueprint.route("/template_devices")
         @server.process_requests
-        def table():
-            return render_template(
-                "table.html", **{"endpoint": f"template_devices", "type": "template_devices"}
-            )
+        def devices():
+            return render_template("/devices.html")
 
         server.register_blueprint(blueprint)
 

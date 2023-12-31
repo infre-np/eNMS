@@ -1,4 +1,4 @@
-from eNMS.forms import BaseForm
+from eNMS.forms import BaseForm , ObjectForm
 from eNMS.fields import (
     BooleanField,
     HiddenField,
@@ -11,8 +11,8 @@ from eNMS.fields import (
 )
 
 
-class Form(BaseForm):
-    form_type = HiddenField(default="custom")
+class PortForm(ObjectForm):
+    form_type = HiddenField(default="port")
     address = SelectField(choices=[("ipv4", "IPv4"), ("ipv6", "IPv6")])
     connected_links = MultipleInstanceField("Links", model="link")
     hostname = StringField("Username", default="admin")
