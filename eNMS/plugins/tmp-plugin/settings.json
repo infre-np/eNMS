@@ -17,7 +17,6 @@
         "icon": "shield",
         "rbac": "access",
         "pages": {
-          "Page": {
           "Devices": {
             "endpoint": "/template_devices",
             "rbac": "access"
